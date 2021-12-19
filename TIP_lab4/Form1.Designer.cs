@@ -254,7 +254,7 @@ namespace TIP_lab4
             this.deleteTranslationButton.TabIndex = 37;
             this.deleteTranslationButton.Text = "Удалить";
             this.deleteTranslationButton.UseVisualStyleBackColor = true;
-            this.deleteTranslationButton.Click += new System.EventHandler(this.button3_Click);
+            this.deleteTranslationButton.Click += new System.EventHandler(this.deleteTranslationButton_Click);
             // 
             // clearTableButton
             // 
