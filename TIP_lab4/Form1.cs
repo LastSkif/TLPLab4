@@ -1,34 +1,29 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TIP_lab4
 {
     public partial class Form1 : Form
     {
-        private Dictionary<string, string> dic;
+        private Dictionary<string, string> dictionary;
         private SortedSet<string> ss;
         public Form1()
         {
-            dic = new Dictionary<string, string>();
+            dictionary = new Dictionary<string, string>();
             ss = new SortedSet<string>();
             InitializeComponent();
             defaultMachineLoader();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addTranslationButton_Click(object sender, EventArgs e)
         {
             if (textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "" && textBox6.Text != "" && textBox7.Text != "")
             {
                 try
                 {                       
-                    dic.Add(textBox3.Text + "," + textBox4.Text + "," + textBox5.Text, textBox6.Text + "," + textBox7.Text);
+                    dictionary.Add(textBox3.Text + "," + textBox4.Text + "," + textBox5.Text, textBox6.Text + "," + textBox7.Text);
                     tableTranslationsListBox.Items.Add(label1.Text + textBox3.Text + "," + textBox4.Text + "," + textBox5.Text + label4.Text + textBox6.Text + "," + textBox7.Text + ")");
                 }
                 catch(ArgumentException){
@@ -36,7 +31,7 @@ namespace TIP_lab4
                 }
                 
             } else {
-                MessageBox.Show("Проверте ввод данных! Некое поле пустое!");
+                MessageBox.Show("Одно из полей пустое. Проверьте ввод данных.");
             }
         }
 
@@ -47,18 +42,18 @@ namespace TIP_lab4
                 string key = tableTranslationsListBox.SelectedItems[0].ToString();
                 var temp = key.Split(label4.Text);
                 key = temp[0].Replace(label1.Text, string.Empty);              
-                dic.Remove(key);              
+                dictionary.Remove(key);              
                 tableTranslationsListBox.Items.RemoveAt(tableTranslationsListBox.SelectedIndex);
             }
                 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void checkStringButton_Click(object sender, EventArgs e)
         {
-            showResultTextBox.Text = "";
+            showResultTextBox.Clear();
             string chain = inputStringTextBox.Text;
-            Stack<string> st = new Stack<string>();
-            st.Push("Z");
+            Stack<string> stack = new Stack<string>();
+            stack.Push("Z");
             string currentState = "0";
             string finalState = "f";
             while (true)
@@ -66,16 +61,17 @@ namespace TIP_lab4
                 string key = "";
                 try
                 {
-                    key = currentState + "," + chain.Substring(0, 1) + "," + st.Peek();
-                }catch (ArgumentOutOfRangeException)
+                    key = currentState + "," + chain.Substring(0, 1) + "," + stack.Peek();
+                } catch (ArgumentOutOfRangeException)
                 {
-                    key = currentState + ",*,"  + st.Peek();
+                    key = currentState + ",*,"  + stack.Peek();
                     
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("sadsad");
+                    MessageBox.Show("ERROR!");
                 }
+
                 try
                 {
                     chain = chain.Substring(1, chain.Length - 1);
@@ -83,26 +79,25 @@ namespace TIP_lab4
                 catch (ArgumentOutOfRangeException)
                 {
                     chain = "*";
-                    if (st.Count != 1)
+                    if (stack.Count != 1)
                     {
-                        MessageBox.Show("Цепочка кончилась, а стек не пустой!");
-                        resultLabel.Text = "Не принадлежит";
+                        MessageBox.Show("Цепочка кончилась, стек не пуст");
+                        resultLabel.Text = "Цепочка не принадлежит языку";
                         return;
                     }
                 }
 
-                if (!dic.ContainsKey(key))
+                if (!dictionary.ContainsKey(key))
                 {
-                    
-                    MessageBox.Show("Нет такого перехода!");
+                    MessageBox.Show("Неизвестный переход");
                     showResultTextBox.Text += "(q" + key + ")";
-                    resultLabel.Text = "Не принадлежит";
+                    resultLabel.Text = "Цепочка не принадлежит языку";
                     return;
                 }
-                string value = dic[key];
+                string value = dictionary[key];
                 if (value.Equals("f,*"))
                 {
-                    resultLabel.Text = "Принадлежит";
+                    resultLabel.Text = "Цепочка принадлежит языку";
                     showResultTextBox.Text += "(q" + key + ") -> (q" + value + ")";
                     return;
                 }
@@ -110,20 +105,20 @@ namespace TIP_lab4
                 currentState = temp[0];
                 if(temp[1].Length == 2)
                 {
-                    st.Push(temp[1].Substring(0,1));
+                    stack.Push(temp[1].Substring(0,1));
                 }
                 if(temp[1].Equals("*"))
                 {
-                    st.Pop();
+                    stack.Pop();
                 }
                 showResultTextBox.Text += "(q" + key + ") -> (q" + value + ") |-- ";
             }
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void clearTableButton_Click(object sender, EventArgs e)
         {
-            dic.Clear();
+            dictionary.Clear();
             tableTranslationsListBox.Items.Clear();
         }
 
@@ -134,24 +129,48 @@ namespace TIP_lab4
 
         private void defaultMachineLoader()
         {
-            dic.Clear();
-            dic.Add("0,a,Z", "0,aZ");
-            dic.Add("0,a,a", "0,aa");
-            dic.Add("0,b,a", "0,a");
-            dic.Add("0,c,a", "1,a");
-            dic.Add("1,c,a", "2,*");
-            dic.Add("2,c,a", "1,a");
-            dic.Add("2,*,Z", "f,*");
-            dic.Add("1,*,Z", "3,*");
+            dictionary.Clear();
+            dictionary.Add("0,a,Z", "0,aZ");
+            dictionary.Add("0,a,a", "0,aa");
+            dictionary.Add("0,b,a", "0,a");
+            dictionary.Add("0,c,a", "1,a");
+            dictionary.Add("1,c,a", "2,*");
+            dictionary.Add("2,c,a", "1,a");
+            dictionary.Add("2,*,Z", "f,*");
+            dictionary.Add("1,*,Z", "3,*");
             tableTranslationsListBox.Items.Clear();
-            tableTranslationsListBox.Items.Add("(q0,a,Z)  - > ( q0,aZ)");
-            tableTranslationsListBox.Items.Add("(q0,a,a)  - > ( q0,aa)");
-            tableTranslationsListBox.Items.Add("(q0,b,a)  - > ( q0,a)");
-            tableTranslationsListBox.Items.Add("(q0,c,a)  - > ( q1,a)");
-            tableTranslationsListBox.Items.Add("(q1,c,a)  - > ( q2,*)");
-            tableTranslationsListBox.Items.Add("(q2,c,a)  - > ( q1,a)");
-            tableTranslationsListBox.Items.Add("(q2,*,Z)  - > ( qf,*)");
-            tableTranslationsListBox.Items.Add("(q1,*,Z)  - > ( q3,*)");
+            tableTranslationsListBox.Items.Add("(q0,a,Z)->(q0,aZ)");
+            tableTranslationsListBox.Items.Add("(q0,a,a)->(q0,aa)");
+            tableTranslationsListBox.Items.Add("(q0,b,a)->(q0,a)");
+            tableTranslationsListBox.Items.Add("(q0,c,a)->(q1,a)");
+            tableTranslationsListBox.Items.Add("(q1,c,a)->(q2,*)");
+            tableTranslationsListBox.Items.Add("(q2,c,a)->(q1,a)");
+            tableTranslationsListBox.Items.Add("(q2,*,Z)->(qf,*)");
+            tableTranslationsListBox.Items.Add("(q1,*,Z)->(q3,*)");
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadFromFileButton_Click(object sender, EventArgs e)
+        {
+            string[] textAutomat = File.ReadAllLines(@"D:\" + filePath.Text);
+            dictionary.Clear();
+            tableTranslationsListBox.Items.Clear();
+            for (int i = 0; i < textAutomat.Length; i++)
+            {
+                addToDictionary(textAutomat[i]);
+                tableTranslationsListBox.Items.Add(textAutomat[i]);
+            }
+        }
+
+        private void addToDictionary(string text) 
+        {
+            string text1 = text.Substring(2, text.IndexOf(')')-2);
+            string text2 = text.Substring(text.IndexOf('>') + 2, text.IndexOf(')')-2);
+            dictionary.Add(text1, text2);
         }
     }
 }

@@ -50,13 +50,15 @@ namespace TIP_lab4
             this.clearTableButton = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.machineGroupBox = new System.Windows.Forms.GroupBox();
+            this.filePath = new System.Windows.Forms.TextBox();
+            this.loadFromFileButton = new System.Windows.Forms.Button();
             this.loadMachineStateButton = new System.Windows.Forms.Button();
             this.inputTransitionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.resultLabel = new System.Windows.Forms.Label();
             this.inputStringsGroupBox = new System.Windows.Forms.GroupBox();
-            this.resultTextLabel = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.hintInput = new System.Windows.Forms.ToolStripStatusLabel();
-            this.resultLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -78,14 +80,14 @@ namespace TIP_lab4
             // 
             // addTranslationButton
             // 
-            this.addTranslationButton.Location = new System.Drawing.Point(359, 25);
+            this.addTranslationButton.Location = new System.Drawing.Point(339, 21);
             this.addTranslationButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addTranslationButton.Name = "addTranslationButton";
-            this.addTranslationButton.Size = new System.Drawing.Size(82, 22);
+            this.addTranslationButton.Size = new System.Drawing.Size(123, 28);
             this.addTranslationButton.TabIndex = 2;
             this.addTranslationButton.Text = "Добавить";
             this.addTranslationButton.UseVisualStyleBackColor = true;
-            this.addTranslationButton.Click += new System.EventHandler(this.button1_Click);
+            this.addTranslationButton.Click += new System.EventHandler(this.addTranslationButton_Click);
             // 
             // label1
             // 
@@ -95,13 +97,13 @@ namespace TIP_lab4
             this.label1.MaximumSize = new System.Drawing.Size(175, 150);
             this.label1.MinimumSize = new System.Drawing.Size(9, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 28);
+            this.label1.Size = new System.Drawing.Size(30, 28);
             this.label1.TabIndex = 3;
-            this.label1.Text = "( q";
+            this.label1.Text = "(q";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(50, 27);
+            this.textBox3.Location = new System.Drawing.Point(41, 27);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
@@ -112,7 +114,7 @@ namespace TIP_lab4
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(76, 21);
+            this.label2.Location = new System.Drawing.Point(67, 21);
             this.label2.MaximumSize = new System.Drawing.Size(175, 150);
             this.label2.MinimumSize = new System.Drawing.Size(9, 22);
             this.label2.Name = "label2";
@@ -122,7 +124,7 @@ namespace TIP_lab4
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(98, 27);
+            this.textBox4.Location = new System.Drawing.Point(89, 27);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -133,7 +135,7 @@ namespace TIP_lab4
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(124, 21);
+            this.label3.Location = new System.Drawing.Point(115, 21);
             this.label3.MaximumSize = new System.Drawing.Size(175, 150);
             this.label3.MinimumSize = new System.Drawing.Size(9, 22);
             this.label3.Name = "label3";
@@ -143,7 +145,7 @@ namespace TIP_lab4
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(146, 27);
+            this.textBox5.Location = new System.Drawing.Point(137, 27);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
@@ -154,17 +156,17 @@ namespace TIP_lab4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(172, 21);
+            this.label4.Location = new System.Drawing.Point(163, 21);
             this.label4.MaximumSize = new System.Drawing.Size(175, 150);
             this.label4.MinimumSize = new System.Drawing.Size(9, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 28);
+            this.label4.Size = new System.Drawing.Size(58, 28);
             this.label4.TabIndex = 9;
-            this.label4.Text = ")  - > ( q";
+            this.label4.Text = ")->(q";
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(261, 27);
+            this.textBox6.Location = new System.Drawing.Point(232, 27);
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
@@ -175,7 +177,7 @@ namespace TIP_lab4
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(287, 21);
+            this.label5.Location = new System.Drawing.Point(258, 21);
             this.label5.MaximumSize = new System.Drawing.Size(175, 150);
             this.label5.MinimumSize = new System.Drawing.Size(9, 22);
             this.label5.Name = "label5";
@@ -185,7 +187,7 @@ namespace TIP_lab4
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(309, 27);
+            this.textBox7.Location = new System.Drawing.Point(280, 27);
             this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
@@ -196,7 +198,7 @@ namespace TIP_lab4
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(335, 21);
+            this.label6.Location = new System.Drawing.Point(306, 21);
             this.label6.MaximumSize = new System.Drawing.Size(175, 150);
             this.label6.MinimumSize = new System.Drawing.Size(9, 22);
             this.label6.Name = "label6";
@@ -206,12 +208,12 @@ namespace TIP_lab4
             // 
             // showResultTextBox
             // 
-            this.showResultTextBox.Location = new System.Drawing.Point(3, 115);
+            this.showResultTextBox.Location = new System.Drawing.Point(3, 110);
             this.showResultTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.showResultTextBox.Multiline = true;
             this.showResultTextBox.Name = "showResultTextBox";
             this.showResultTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.showResultTextBox.Size = new System.Drawing.Size(439, 277);
+            this.showResultTextBox.Size = new System.Drawing.Size(439, 281);
             this.showResultTextBox.TabIndex = 14;
             // 
             // checkStringButton
@@ -223,7 +225,7 @@ namespace TIP_lab4
             this.checkStringButton.TabIndex = 16;
             this.checkStringButton.Text = "Проверить";
             this.checkStringButton.UseVisualStyleBackColor = true;
-            this.checkStringButton.Click += new System.EventHandler(this.button2_Click);
+            this.checkStringButton.Click += new System.EventHandler(this.checkStringButton_Click);
             // 
             // tableTranslationsListBox
             // 
@@ -232,7 +234,7 @@ namespace TIP_lab4
             this.tableTranslationsListBox.Location = new System.Drawing.Point(6, 21);
             this.tableTranslationsListBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableTranslationsListBox.Name = "tableTranslationsListBox";
-            this.tableTranslationsListBox.Size = new System.Drawing.Size(456, 244);
+            this.tableTranslationsListBox.Size = new System.Drawing.Size(456, 229);
             this.tableTranslationsListBox.TabIndex = 34;
             // 
             // label18
@@ -245,10 +247,10 @@ namespace TIP_lab4
             // 
             // deleteTranslationButton
             // 
-            this.deleteTranslationButton.Location = new System.Drawing.Point(468, 21);
+            this.deleteTranslationButton.Location = new System.Drawing.Point(467, 21);
             this.deleteTranslationButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deleteTranslationButton.Name = "deleteTranslationButton";
-            this.deleteTranslationButton.Size = new System.Drawing.Size(82, 40);
+            this.deleteTranslationButton.Size = new System.Drawing.Size(82, 71);
             this.deleteTranslationButton.TabIndex = 37;
             this.deleteTranslationButton.Text = "Удалить";
             this.deleteTranslationButton.UseVisualStyleBackColor = true;
@@ -256,14 +258,14 @@ namespace TIP_lab4
             // 
             // clearTableButton
             // 
-            this.clearTableButton.Location = new System.Drawing.Point(468, 65);
+            this.clearTableButton.Location = new System.Drawing.Point(468, 96);
             this.clearTableButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clearTableButton.Name = "clearTableButton";
-            this.clearTableButton.Size = new System.Drawing.Size(82, 40);
+            this.clearTableButton.Size = new System.Drawing.Size(82, 70);
             this.clearTableButton.TabIndex = 48;
             this.clearTableButton.Text = "Очистить";
             this.clearTableButton.UseVisualStyleBackColor = true;
-            this.clearTableButton.Click += new System.EventHandler(this.button4_Click);
+            this.clearTableButton.Click += new System.EventHandler(this.clearTableButton_Click);
             // 
             // splitContainer1
             // 
@@ -278,9 +280,9 @@ namespace TIP_lab4
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.resultLabel);
             this.splitContainer1.Panel2.Controls.Add(this.inputStringsGroupBox);
-            this.splitContainer1.Panel2.Controls.Add(this.resultTextLabel);
             this.splitContainer1.Panel2.Controls.Add(this.showResultTextBox);
             this.splitContainer1.Size = new System.Drawing.Size(1011, 394);
             this.splitContainer1.SplitterDistance = 562;
@@ -288,24 +290,47 @@ namespace TIP_lab4
             // 
             // machineGroupBox
             // 
+            this.machineGroupBox.Controls.Add(this.filePath);
+            this.machineGroupBox.Controls.Add(this.loadFromFileButton);
             this.machineGroupBox.Controls.Add(this.loadMachineStateButton);
             this.machineGroupBox.Controls.Add(this.clearTableButton);
             this.machineGroupBox.Controls.Add(this.deleteTranslationButton);
             this.machineGroupBox.Controls.Add(this.tableTranslationsListBox);
             this.machineGroupBox.Location = new System.Drawing.Point(3, 3);
             this.machineGroupBox.Name = "machineGroupBox";
-            this.machineGroupBox.Size = new System.Drawing.Size(556, 265);
+            this.machineGroupBox.Size = new System.Drawing.Size(556, 313);
             this.machineGroupBox.TabIndex = 51;
             this.machineGroupBox.TabStop = false;
             this.machineGroupBox.Text = "Автомат";
             // 
+            // filePath
+            // 
+            this.filePath.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.filePath.Location = new System.Drawing.Point(6, 268);
+            this.filePath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.filePath.Multiline = true;
+            this.filePath.Name = "filePath";
+            this.filePath.Size = new System.Drawing.Size(456, 36);
+            this.filePath.TabIndex = 17;
+            // 
+            // loadFromFileButton
+            // 
+            this.loadFromFileButton.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.loadFromFileButton.Location = new System.Drawing.Point(468, 268);
+            this.loadFromFileButton.Name = "loadFromFileButton";
+            this.loadFromFileButton.Size = new System.Drawing.Size(81, 36);
+            this.loadFromFileButton.TabIndex = 53;
+            this.loadFromFileButton.Text = "Загрузить из файла";
+            this.loadFromFileButton.UseVisualStyleBackColor = true;
+            this.loadFromFileButton.Click += new System.EventHandler(this.loadFromFileButton_Click);
+            // 
             // loadMachineStateButton
             // 
-            this.loadMachineStateButton.Location = new System.Drawing.Point(468, 110);
+            this.loadMachineStateButton.Location = new System.Drawing.Point(468, 171);
             this.loadMachineStateButton.Name = "loadMachineStateButton";
-            this.loadMachineStateButton.Size = new System.Drawing.Size(82, 41);
+            this.loadMachineStateButton.Size = new System.Drawing.Size(82, 79);
             this.loadMachineStateButton.TabIndex = 52;
-            this.loadMachineStateButton.Text = "Загрузить автомат";
+            this.loadMachineStateButton.Text = "Загрузить автомат по умолчанию";
             this.loadMachineStateButton.UseVisualStyleBackColor = true;
             this.loadMachineStateButton.Click += new System.EventHandler(this.loadMachineStateButton_Click);
             // 
@@ -323,12 +348,30 @@ namespace TIP_lab4
             this.inputTransitionsGroupBox.Controls.Add(this.label5);
             this.inputTransitionsGroupBox.Controls.Add(this.textBox7);
             this.inputTransitionsGroupBox.Controls.Add(this.label6);
-            this.inputTransitionsGroupBox.Location = new System.Drawing.Point(3, 274);
+            this.inputTransitionsGroupBox.Location = new System.Drawing.Point(3, 322);
             this.inputTransitionsGroupBox.Name = "inputTransitionsGroupBox";
-            this.inputTransitionsGroupBox.Size = new System.Drawing.Size(556, 52);
+            this.inputTransitionsGroupBox.Size = new System.Drawing.Size(556, 69);
             this.inputTransitionsGroupBox.TabIndex = 50;
             this.inputTransitionsGroupBox.TabStop = false;
-            this.inputTransitionsGroupBox.Text = "Переход";
+            this.inputTransitionsGroupBox.Text = "Добавление перехода";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 94);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 15);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "Вывод:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // resultLabel
+            // 
+            this.resultLabel.AutoSize = true;
+            this.resultLabel.Location = new System.Drawing.Point(71, 7);
+            this.resultLabel.Name = "resultLabel";
+            this.resultLabel.Size = new System.Drawing.Size(0, 15);
+            this.resultLabel.TabIndex = 37;
             // 
             // inputStringsGroupBox
             // 
@@ -340,15 +383,6 @@ namespace TIP_lab4
             this.inputStringsGroupBox.TabIndex = 36;
             this.inputStringsGroupBox.TabStop = false;
             this.inputStringsGroupBox.Text = "Цепочка";
-            // 
-            // resultTextLabel
-            // 
-            this.resultTextLabel.AutoSize = true;
-            this.resultTextLabel.Location = new System.Drawing.Point(3, 98);
-            this.resultTextLabel.Name = "resultTextLabel";
-            this.resultTextLabel.Size = new System.Drawing.Size(63, 15);
-            this.resultTextLabel.TabIndex = 35;
-            this.resultTextLabel.Text = "Результат:";
             // 
             // statusStrip1
             // 
@@ -367,14 +401,6 @@ namespace TIP_lab4
             this.hintInput.Text = "qo - стартовое состояние, qf - финальное состояние,  Z - пустой символ в стеке, *" +
     " - конец цепочки и удаление символа";
             // 
-            // resultLabel
-            // 
-            this.resultLabel.AutoSize = true;
-            this.resultLabel.Location = new System.Drawing.Point(72, 98);
-            this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(0, 15);
-            this.resultLabel.TabIndex = 37;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -392,6 +418,7 @@ namespace TIP_lab4
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.machineGroupBox.ResumeLayout(false);
+            this.machineGroupBox.PerformLayout();
             this.inputTransitionsGroupBox.ResumeLayout(false);
             this.inputTransitionsGroupBox.PerformLayout();
             this.inputStringsGroupBox.ResumeLayout(false);
@@ -428,10 +455,12 @@ namespace TIP_lab4
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel hintInput;
         private System.Windows.Forms.GroupBox inputStringsGroupBox;
-        private System.Windows.Forms.Label resultTextLabel;
         private System.Windows.Forms.GroupBox machineGroupBox;
         private System.Windows.Forms.Button loadMachineStateButton;
         private System.Windows.Forms.Label resultLabel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button loadFromFileButton;
+        private System.Windows.Forms.TextBox filePath;
     }
 }
 
