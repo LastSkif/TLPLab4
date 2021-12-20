@@ -129,23 +129,19 @@ namespace TIP_lab4
         private void defaultMachineLoader()
         {
             dictionary.Clear();
-            dictionary.Add("0,a,Z", "0,aZ");
-            dictionary.Add("0,a,a", "0,aa");
-            dictionary.Add("0,b,a", "0,a");
-            dictionary.Add("0,c,a", "1,a");
-            dictionary.Add("1,c,a", "2,*");
-            dictionary.Add("2,c,a", "1,a");
-            dictionary.Add("2,*,Z", "f,*");
-            dictionary.Add("1,*,Z", "3,*");
+            dictionary.Add("0,0,Z", "0,0Z");
+            dictionary.Add("0,0,0", "0,00");
+            dictionary.Add("0,1,0", "1,*");
+            dictionary.Add("1,1,0", "1,*");
+            dictionary.Add("1,1,Z", "1,Z");
+            dictionary.Add("1,*,Z", "f,*");
             tableTranslationsListBox.Items.Clear();
-            tableTranslationsListBox.Items.Add("(q0,a,Z)->(q0,aZ)");
-            tableTranslationsListBox.Items.Add("(q0,a,a)->(q0,aa)");
-            tableTranslationsListBox.Items.Add("(q0,b,a)->(q0,a)");
-            tableTranslationsListBox.Items.Add("(q0,c,a)->(q1,a)");
-            tableTranslationsListBox.Items.Add("(q1,c,a)->(q2,*)");
-            tableTranslationsListBox.Items.Add("(q2,c,a)->(q1,a)");
-            tableTranslationsListBox.Items.Add("(q2,*,Z)->(qf,*)");
-            tableTranslationsListBox.Items.Add("(q1,*,Z)->(q3,*)");
+            tableTranslationsListBox.Items.Add("(q0,0,Z)->(q0,0Z)");
+            tableTranslationsListBox.Items.Add("(q0,0,0)->(q0,00)");
+            tableTranslationsListBox.Items.Add("(q0,1,0)->(q1,*)");
+            tableTranslationsListBox.Items.Add("(q1,1,0)->(q1,*)");
+            tableTranslationsListBox.Items.Add("(q1,1,Z)->(q1,Z)");
+            tableTranslationsListBox.Items.Add("(q1,*,Z)->(qf,*)");
         }
 
         private void label7_Click(object sender, EventArgs e)
