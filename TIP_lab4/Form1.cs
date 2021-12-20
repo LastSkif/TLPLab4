@@ -65,7 +65,6 @@ namespace TIP_lab4
                 } catch (ArgumentOutOfRangeException)
                 {
                     key = currentState + ",*,"  + stack.Peek();
-                    
                 }
                 catch (InvalidOperationException)
                 {

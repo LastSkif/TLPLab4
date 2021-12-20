@@ -398,7 +398,7 @@ namespace TIP_lab4
             // 
             this.hintInput.Name = "hintInput";
             this.hintInput.Size = new System.Drawing.Size(668, 17);
-            this.hintInput.Text = "qo - стартовое состояние, qf - финальное состояние,  Z - пустой символ в стеке, *" +
+            this.hintInput.Text = "qo - начальное состояние, qf - конечное состояние,  Z - пустой символ в стеке, *" +
     " - конец цепочки и удаление символа";
             // 
             // Form1
