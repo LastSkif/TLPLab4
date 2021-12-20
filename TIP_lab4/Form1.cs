@@ -171,8 +171,8 @@ namespace TIP_lab4
             string text1 = text.Substring(2, text.IndexOf(')')-2);
             string text2buf = text.Substring(text.LastIndexOf('('));
             string text2 = text2buf.Substring(2, text2buf.IndexOf(')')-2);
-            tableTranslationsListBox.Items.Add(text1);
-            tableTranslationsListBox.Items.Add(text2);
+//            tableTranslationsListBox.Items.Add(text1);
+//            tableTranslationsListBox.Items.Add(text2);
             dictionary.Add(text1, text2);
         }
     }
